@@ -6,8 +6,8 @@
 # Back End
 Este proyecto fue generado con nodejs.
 Para levantar el servidor back end posicionarse en la carpeta back-end-nodejs y correr los siguientes comandos
-$ npm install\n
-$ npm start\n
+$ npm install<br>
+$ npm start<br>
 
 # Front End
 Este proyecto fue generado con Angular.
