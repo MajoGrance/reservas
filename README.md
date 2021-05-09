@@ -1,7 +1,7 @@
 # Requerimientos
-NodeJS 12.18.3: https://nodejs.org/es/
-TypeScript 3.9.7: http://www.typescriptlang.org/
-Angular 11.2.2 https://cli.angular.io/
+*NodeJS 12.18.3: https://nodejs.org/es/
+*TypeScript 3.9.7: http://www.typescriptlang.org/
+*Angular 11.2.2 https://cli.angular.io/
 
 # Back End
 Este proyecto fue generado con nodejs.
