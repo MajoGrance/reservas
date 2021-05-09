@@ -1,0 +1,26 @@
+const { Sequelize } = require('sequelize');
+
+const PUERTO = 3000;
+
+const DB = {
+    username: 'postgres',
+    host: '127.0.0.1',
+    database: 'reservas',
+    password: 'postgres',
+    port: 5432
+}
+
+const sequelize = new Sequelize({
+    dialect: 'postgres',
+    host: DB.host,
+    port: DB.port,
+    database: DB.database,
+    username: DB.username,
+    password: DB.password,
+});
+
+module.exports = {
+    PUERTO,
+    DB,
+    sequelize
+}
