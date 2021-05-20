@@ -13,6 +13,7 @@ export class ClienteListComponent implements OnInit {
     url = '/sitio/clientes';
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
+        { field: 'cedula', header: 'Cedula', type: 'numeric' },
         { field: 'nombre', header: 'Nombre', type: 'text' },
         { field: 'apellido', header: 'Apellido', type: 'text' },
     ];
