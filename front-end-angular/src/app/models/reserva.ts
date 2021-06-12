@@ -85,7 +85,7 @@ export class ReservaModel {
             mesaId: [this.mesaId, Validators.required],
             fecha: [this.fecha, Validators.required],
             horarios: [horariosNro, Validators.required],
-            clienteId: [this.clienteId, Validators.required],
+            clienteId: [this.clienteId],
             cantidad: [this.cantidad, Validators.required],
             cedulaCliente: [this.cedulaCliente, Validators.required],
             nombreCliente: [this.nombreCliente, Validators.required],

@@ -240,7 +240,6 @@ export class ReservarComponent implements OnInit {
                     return str1.localeCompare(str2) * -1;
                 });
                 this.reservas = resp.resp;
-                console.log(this.reservas);
             } else {
                 this.toastrService.show(`${resp.resp}`,
                     `${resp.msg}`, { position: NbGlobalPhysicalPosition.TOP_RIGHT, status: 'danger' });
@@ -278,7 +277,6 @@ export class ReservarComponent implements OnInit {
                 }
                 if (this.mesas.length) {
                     const mesaActual = this.mesas.find(mesa => mesa.id === this.formGroup.get('mesaId').value);
-                    console.log(mesaActual);
                     if (mesaActual) {
                         if (this.mesaOcupada({x: mesaActual.posicionx, y: mesaActual.posiciony})) {
                             for (const mesa of resp.resp) {
@@ -390,7 +388,6 @@ export class ReservarComponent implements OnInit {
             this.formGroup.get(key)?.markAsTouched();
         });
         try {
-            console.log(this.formGroup.value);
             if (this.formGroup.valid) {
                 const objectCliente: any = {
                     cedula: this.formGroup.get('cedulaCliente').value,
@@ -402,12 +399,13 @@ export class ReservarComponent implements OnInit {
                 }
                 const modelCliente = new ClienteModel(this.clienteService).deserialize(objectCliente);
                 const respCliente = await modelCliente.save();
-                console.log(respCliente);
                 if (!respCliente.ok) {
                     this.toastrService.show(`${respCliente.resp}`,
                         `${respCliente.msg}`, { position: NbGlobalPhysicalPosition.TOP_RIGHT, status: 'danger' });
                     return;
                 }
+                const cliente = respCliente.resp;
+                this.formGroup.get('clienteId').setValue(cliente.id);
                 const model = new ReservaModel(this.reservaService).deserialize(this.formGroup.getRawValue());
                 const resp = await model.save();
                 console.log(resp);

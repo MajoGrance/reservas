@@ -84,7 +84,7 @@ export class RestauranteWindowComponent implements OnInit {
         try {
             const resp = await this.restauranteService.delete(this.formGroup.get('id').value);
             if (resp.ok) {
-                this.router.navigate(['/sitio/mesas']);
+                this.router.navigate(['/sitio/restaurantes']);
                 this.toastrService.show(
                     `id: ${resp.resp.id}`,
                     `${resp.msg}`,
