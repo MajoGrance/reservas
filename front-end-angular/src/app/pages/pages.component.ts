@@ -37,6 +37,18 @@ export class PagesComponent implements OnInit {
             title: 'Listar reservas',
             link: '/sitio/lista-reservas',
             pathMatch: 'prefix'
+        },
+        {
+            icon: {icon: 'tag', pack: 'fas'},
+            title: 'Categoría de Productos',
+            link: '/sitio/categorias-productos',
+            pathMatch: 'prefix'
+        },
+        {
+            icon: {icon: 'hamburger', pack: 'fas'},
+            title: 'Productos',
+            link: '/sitio/productos',
+            pathMatch: 'prefix'
         }
     ];
     constructor() { }
