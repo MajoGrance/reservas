@@ -11,6 +11,7 @@ import { ClienteService } from '../../../services/abm/cliente.service';
 })
 export class ClienteWindowComponent implements OnInit {
     title: string;
+    nuevo: boolean;
     formGroup = new ClienteModel(this.clienteService).getFormGroup();
     constructor(
         private clienteService: ClienteService,
@@ -25,9 +26,11 @@ export class ClienteWindowComponent implements OnInit {
             next: (params) => {
                 if (params.id !== 'nuevo') {
                     this.title = 'Editar cliente';
+                    this.nuevo = false;
                     this.getFormGroup(params.id);
                 } else {
                     this.title = 'Nuevo cliente';
+                    this.nuevo = true;
                 }
             }
         });

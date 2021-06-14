@@ -14,9 +14,9 @@ export class MesaListComponent implements OnInit {
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'nombre', header: 'Nombre', type: 'text' },
-        { field: 'restauranteId', header: 'ID Restaurante', type: 'number' },
-        { field: 'planta', header: 'Planta', type: 'number' },
-        { field: 'capacidad', header: 'Capacidad', type: 'number' },
+        { field: 'restauranteId', header: 'ID Restaurante', type: 'numeric' },
+        { field: 'planta', header: 'Planta', type: 'numeric' },
+        { field: 'capacidad', header: 'Capacidad', type: 'numeric' },
     ];
 
     constructor(

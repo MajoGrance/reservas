@@ -8,7 +8,11 @@ const get = async(req, res) => {
             const obj = await Restaurante.findOne({ where: {
                 id: req.params.id
             }})
-            res.send({ok: true, msg: `${NAME}`, resp: obj});
+            if (obj) {
+                res.send({ok: true, msg: `${NAME}`, resp: obj});
+            } else {
+                res.send({ok: false, msg: `${NAME}`, resp: 'No encontrado'});
+            }
         } else {
             const objs = await Restaurante.findAll();
             res.send({ok: true, msg: `Lista de ${PLURAL_NAME}`, resp: objs});
@@ -48,7 +52,7 @@ const put = async(req, res) => {
 const del = async(req, res) => {
     try {
         await Restaurante.destroy({where: {id: req.params.id}});
-        res.send({ok: true, msg: `${NAME} eliminado`, resp: []});
+        res.send({ok: true, msg: `${NAME} eliminado`, resp: req.params});
     } catch (error) {
         res.send({ok: false, msg: `Error DELETE ${NAME}`, resp: String(error)})
     }

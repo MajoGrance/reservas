@@ -4,6 +4,13 @@ import { NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
 import { ProductoModel } from '../../../models/producto';
 import { ProductoService } from '../../../services/abm/producto.service';
 import { CategoriaProductoService } from '../../../services/abm/categoria-producto.service';
+import { FormControl } from '@angular/forms';
+
+function emptyValidator(control: FormControl): any {
+    if (!control || !control.value || Number(control.value) === 0) {
+        return {required: true};
+    }
+}
 
 @Component({
     selector: 'app-producto-window',
@@ -15,6 +22,7 @@ export class ProductoWindowComponent implements OnInit {
     formGroup = new ProductoModel(this.productoService).getFormGroup();
     nuevo: boolean;
     categoriaProductos: any[] = [];
+    precioFormControl = new FormControl('', emptyValidator);
 
     constructor(
         private productoService: ProductoService,
@@ -43,7 +51,6 @@ export class ProductoWindowComponent implements OnInit {
                 } else {
                     this.title = 'Nuevo producto';
                     this.nuevo = true;
-                    this.formGroup.get('capacidad').setValue(2);
                 }
             }
         });
@@ -103,6 +110,7 @@ export class ProductoWindowComponent implements OnInit {
                 const model = new ProductoModel(this.productoService);
                 model.deserialize(resp.resp);
                 this.formGroup = model.getFormGroup();
+                this.precioFormControl.setValue(this.formGroup.get('precio').value);
                 // tslint:disable-next-line: deprecation
                 this.formGroup.get('categoriaProductoId').valueChanges.subscribe({
                     next: () => {
@@ -162,5 +170,56 @@ export class ProductoWindowComponent implements OnInit {
         } catch (error) {
             this.toastrService.show(`${error}`, 'Error', { position: NbGlobalPhysicalPosition.TOP_RIGHT, status: 'danger' });
         }
+    }
+
+    asANumber(value: string): number {
+        const valueStr = value?.toString();
+        if (valueStr) {
+            let num = value?.toString().replace('.', '');
+            num = num.replace(',', '.');
+            return Number(num);
+        }
+        return 0;
+    }
+
+
+    changePrecio(newValue: string): void {
+        const value = this.asANumber(newValue);
+        this.formGroup.get('precio')?.setValue(value);
+        if (value === 0) {
+            this.formGroup.get('precio')?.setErrors({required: true});
+        }
+    }
+
+    focusoutPrecio(): void {
+        this.formGroup.get('precio')?.markAsTouched();
+    }
+
+    isADigit(event: any): boolean {
+        if (event.key === '0') {
+            return true;
+        } else if (event.key === '1') {
+            return true;
+        } else if (event.key === '2') {
+            return true;
+        } else if (event.key === '3') {
+            return true;
+        } else if (event.key === '4') {
+            return true;
+        } else if (event.key === '5') {
+            return true;
+        } else if (event.key === '6') {
+            return true;
+        } else if (event.key === '7') {
+            return true;
+        } else if (event.key === '8') {
+            return true;
+        } else if (event.key === '9') {
+            return true;
+        }
+        if (event.keyCode === 8 || event.keyCode === 9) {
+            return true;
+        }
+        return false;
     }
 }

@@ -8,7 +8,11 @@ const get = async(req, res) => {
             const obj = await Mesa.findOne({ where: {
                 id: req.params.id
             }})
-            res.send({ok: true, msg: `${NAME}`, resp: obj});
+            if (obj) {
+                res.send({ok: true, msg: `${NAME}`, resp: obj});
+            } else {
+                res.send({ok: false, msg: `${NAME}`, resp: 'No encontrado'});
+            }
         } else {
             const objs = await Mesa.findAll();
             res.send({ok: true, msg: `Lista de ${PLURAL_NAME}`, resp: objs});
@@ -48,7 +52,7 @@ const put = async(req, res) => {
 const del = async(req, res) => {
     try {
         await Mesa.destroy({where: {id: req.params.id}});
-        res.send({ok: true, msg: `${NAME} eliminada`, resp: []});
+        res.send({ok: true, msg: `${NAME} eliminada`, resp: req.params});
     } catch (error) {
         res.send({ok: false, msg: `Error DELETE ${NAME}`, resp: String(error)})
     }

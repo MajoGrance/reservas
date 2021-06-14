@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class WindowComponent implements OnInit {
     @Input() title = '';
-    @Input() nuevo;;
+    @Input() nuevo: boolean;
 
     @Output() save = new EventEmitter();
     @Output() delete = new EventEmitter();

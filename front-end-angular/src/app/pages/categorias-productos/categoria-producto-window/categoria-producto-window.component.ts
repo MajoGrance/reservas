@@ -11,6 +11,7 @@ import { CategoriaProductoService } from '../../../services/abm/categoria-produc
 })
 export class CategoriaProductoWindowComponent implements OnInit {
     title: string;
+    nuevo: boolean;
     formGroup = new CategoriaProductoModel(this.categoriaProductoService).getFormGroup();
     constructor(
         private categoriaProductoService: CategoriaProductoService,
@@ -25,9 +26,11 @@ export class CategoriaProductoWindowComponent implements OnInit {
             next: (params) => {
                 if (params.id !== 'nuevo') {
                     this.title = 'Editar categoría de producto';
+                    this.nuevo = false;
                     this.getFormGroup(params.id);
                 } else {
                     this.title = 'Nueva categoría de producto';
+                    this.nuevo = true;
                 }
             }
         });

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { ListWindowComponent } from './components/list-window/list-window.component';
 import { WindowComponent } from './components/window/window.component';
@@ -19,9 +19,13 @@ import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DetailTableComponent } from './components/detail-table/detail-table.component';
+import { ConsumoDetalleComponent } from './components/consumo-detalle/consumo-detalle.component';
 
 const NEBULAR_MODULES = [
     NbLayoutModule,
@@ -37,11 +41,13 @@ const NEBULAR_MODULES = [
 
 const MATERIAL_MODULES = [
     MatRippleModule,
+    MatAutocompleteModule,
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatChipsModule
 ];
 
 const PRIME_MODULES = [
@@ -52,7 +58,9 @@ const PRIME_MODULES = [
         declarations: [
         HeaderComponent,
         ListWindowComponent,
-        WindowComponent
+        WindowComponent,
+        DetailTableComponent,
+        ConsumoDetalleComponent
     ],
     imports: [
         CommonModule,
@@ -68,9 +76,13 @@ const PRIME_MODULES = [
         WindowComponent,
         FormsModule,
         ReactiveFormsModule,
+        DetailTableComponent,
         ...NEBULAR_MODULES,
         ...MATERIAL_MODULES,
         ...PRIME_MODULES
+    ],
+    providers: [
+        CurrencyPipe,
     ]
 })
 export class SharedModule { }

@@ -9,6 +9,10 @@ import { NbMenuItem } from '@nebular/theme';
 export class PagesComponent implements OnInit {
     menuItems: NbMenuItem[] = [
         {
+            title: 'Segundo parcial',
+            group: true
+        },
+        {
             icon: {icon: 'utensils', pack: 'fas'},
             title: 'Restaurantes',
             link: '/sitio/restaurantes',
@@ -39,6 +43,10 @@ export class PagesComponent implements OnInit {
             pathMatch: 'prefix'
         },
         {
+            title: 'Primer final',
+            group: true
+        },
+        {
             icon: {icon: 'tag', pack: 'fas'},
             title: 'Categoría de Productos',
             link: '/sitio/categorias-productos',
@@ -48,6 +56,18 @@ export class PagesComponent implements OnInit {
             icon: {icon: 'hamburger', pack: 'fas'},
             title: 'Productos',
             link: '/sitio/productos',
+            pathMatch: 'prefix'
+        },
+        {
+            icon: {icon: 'cookie-bite', pack: 'fas'},
+            title: 'Consumos',
+            link: '/sitio/consumos',
+            pathMatch: 'prefix'
+        },
+        {
+            icon: {icon: 'receipt', pack: 'fas'},
+            title: 'Gestión de consumos',
+            link: '/sitio/gestion-consumos',
             pathMatch: 'prefix'
         }
     ];

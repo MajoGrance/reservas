@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
-import { NbMenuModule, NbSidebarModule, NbToastrModule, NbToastrService } from '@nebular/theme';
+import { NbDialogService, NbMenuModule, NbSidebarModule, NbToastrModule, NbToastrService, NbWindowModule } from '@nebular/theme';
 import { PagesRoutingModule } from './pages-routing.routes';
 import { RestauranteWindowComponent } from './restaurantes/restaurante-window/restaurante-window.component';
 import { RestauranteListComponent } from './restaurantes/restaurante-list/restaurante-list.component';
@@ -24,6 +24,10 @@ import { ClienteService } from '../services/abm/cliente.service';
 import { CategoriaProductoService } from '../services/abm/categoria-producto.service';
 import { ProductoService } from '../services/abm/producto.service';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ConsumoListComponent } from './consumos/consumo-list/consumo-list.component';
+import { ConsumoWindowComponent } from './consumos/consumo-window/consumo-window.component';
+import { GestionConsumosComponent } from './gestion-consumos/gestion-consumos.component';
+import { ConsumoService } from '../services/abm/consumo.service';
 
 
 
@@ -41,13 +45,17 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
         CategoriaProdcutoListComponent,
         CategoriaProductoWindowComponent,
         ProductoListComponent,
-        ProductoWindowComponent
+        ProductoWindowComponent,
+        ConsumoListComponent,
+        ConsumoWindowComponent,
+        GestionConsumosComponent,
     ],
     imports: [
         CommonModule,
         PagesRoutingModule,
         SharedModule,
         HttpClientModule,
+        NbWindowModule.forRoot(),
         NbSidebarModule.forRoot(),
         NbMenuModule.forRoot(),
         NbToastrModule.forRoot()
@@ -59,6 +67,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
         ClienteService,
         CategoriaProductoService,
         ProductoService,
+        ConsumoService,
         NbToastrService,
         { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
     ]

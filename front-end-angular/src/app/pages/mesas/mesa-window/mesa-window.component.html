@@ -23,7 +23,7 @@
                     <mat-label>Restaurante*</mat-label>
                     <mat-select formControlName="restauranteId">
                       <mat-option *ngFor="let restaurante of restaurantes" [value]="restaurante.id">
-                        {{restaurante.nombre}} - {{restaurante.nombre}}
+                        {{restaurante.id}} - {{restaurante.nombre}}
                       </mat-option>
                     </mat-select>
                 </mat-form-field>

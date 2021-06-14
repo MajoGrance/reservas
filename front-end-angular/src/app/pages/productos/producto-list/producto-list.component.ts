@@ -15,7 +15,7 @@ export class ProductoListComponent implements OnInit {
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'nombre', header: 'Nombre', type: 'text' },
         { field: 'categoriaProductoId', header: 'ID Categoria Producto', type: 'number' },
-        { field: 'precio', header: 'Precio', type: 'number' },
+        { field: 'precio', header: 'Precio', type: 'amount' },
     ];
 
     constructor(

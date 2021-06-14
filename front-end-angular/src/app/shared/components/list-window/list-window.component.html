@@ -14,8 +14,22 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr [pSelectableRow]="rowData" (click)="onSelect(rowData.id)">
-                    <td *ngFor="let col of columns">
-                        {{rowData[col.field]}}
+                    <td *ngFor="let col of columns" class="text-center">
+                        <span *ngIf="col.type === 'amount'">{{rowData[col.field] | currency: 'PYG': '': '1.0-0': 'es-AR'}}</span>
+                        <span *ngIf="col.type === 'date'">{{rowData[col.field] | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+                        <span *ngIf="col.type === 'status'">
+                            <span *ngIf="rowData[col.field] === 'abierto'">
+                                <mat-chip-list>
+                                    <mat-chip class="open-status">Abierto</mat-chip>
+                                </mat-chip-list>
+                            </span>
+                            <span *ngIf="rowData[col.field] === 'cerrado'">
+                                <mat-chip-list>
+                                    <mat-chip class="closed-status">Cerrado</mat-chip>
+                                </mat-chip-list>
+                            </span>
+                        </span>
+                        <span *ngIf="col.type !== 'amount' && col.type !== 'date' && col.type !== 'status'">{{rowData[col.field]}}</span>
                     </td>
                 </tr>
             </ng-template>

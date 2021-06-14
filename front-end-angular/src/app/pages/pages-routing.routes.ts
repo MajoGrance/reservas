@@ -13,6 +13,9 @@ import { CategoriaProdcutoListComponent } from './categorias-productos/categoria
 import { CategoriaProductoWindowComponent } from './categorias-productos/categoria-producto-window/categoria-producto-window.component';
 import { ProductoListComponent } from './productos/producto-list/producto-list.component';
 import { ProductoWindowComponent } from './productos/producto-window/producto-window.component';
+import { ConsumoListComponent } from './consumos/consumo-list/consumo-list.component';
+import { ConsumoWindowComponent } from './consumos/consumo-window/consumo-window.component';
+import { GestionConsumosComponent } from './gestion-consumos/gestion-consumos.component';
 
 const routes: Routes = [
     {
@@ -31,6 +34,9 @@ const routes: Routes = [
             {path: 'categorias-productos/:id', component: CategoriaProductoWindowComponent},
             {path: 'productos', component: ProductoListComponent},
             {path: 'productos/:id', component: ProductoWindowComponent},
+            {path: 'consumos', component: ConsumoListComponent},
+            {path: 'consumos/:id', component: ConsumoWindowComponent},
+            {path: 'gestion-consumos', component: GestionConsumosComponent},
             {path: '**', redirectTo: 'restaurantes'}
         ]
     }

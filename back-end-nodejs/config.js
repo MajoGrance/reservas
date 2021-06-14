@@ -17,6 +17,10 @@ const sequelize = new Sequelize({
     database: DB.database,
     username: DB.username,
     password: DB.password,
+    dialectOptions: {
+        useUTC: false
+    },
+    timezone: '-04:00'
 });
 
 module.exports = {
